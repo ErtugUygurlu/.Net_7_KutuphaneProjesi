@@ -1,0 +1,83 @@
+﻿<br />
+<!DOCTYPE html>
+<html>
+<head>
+    <title>İletişim Sayfası</title>
+    <style>
+        /* İletişim içeriği ve harita sınıfları için stil tanımlamaları */
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* İçerikleri dikeyde hizalar */
+        }
+
+            /* Haritanın kendisi (iframe) için stil tanımlaması */
+            .map-container iframe {
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+    </style>
+</head>
+<body>
+    @{
+        ViewData["Title"] = "İletişim";
+    }
+    <div class="text-center contact-info">
+        <h2 style="color:red">@ViewData["Title"]</h2>
+        <hr style="border: 1px solid black;">
+
+        
+
+        <h3 style="color:red">Telefon Numarası:</h3>
+        <h3>1234 567 89 01</h3>
+        <hr style="border: 1px solid black;">
+
+        <h3 style="color:red">Mail Adresi:</h3>
+        <h2><a href="mailto:ertu@gmail.com">ertu@gmail.com</a></h2>
+   
+
+    <hr style="border: 1px solid black;">
+
+    <h3 style="color:red">Adres:</h3>
+    <h3 >Bahçelievler, İsmet İnönü Blv. No:4, 06490</h3>
+    <h3>Çankaya/Ankara</h3>
+    <hr style="border: 1px solid black;">
+
+    <div class="text-center contact-details">
+        <h2 style="color:red">Konum:</h2>
+    </div>
+    <hr>
+    </div>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5452.752166987324!2d32.82461883317058!3d39.913340654901134!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34f3ea3aab92b%3A0x6edc34cbf115c92b!2zTWlsbMOuIEvDvHTDvHBoYW5l!5e0!3m2!1str!2str!4v1692458309938!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <script>
+        function initMap() {
+            var location = { lat: 39.9272, lng: 32.8644 };
+            var map = new google.maps.Map(document.querySelector(".map-container iframe"), {
+                zoom: 15,
+                center: location,
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            initMap();
+        });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+</html>
+

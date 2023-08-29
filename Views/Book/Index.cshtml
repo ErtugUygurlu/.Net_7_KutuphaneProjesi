@@ -1,0 +1,97 @@
+﻿@using VektorelProje.Models;
+@using VektorelProje.Utility;
+@model List<Book>
+
+@if (TempData["basarili"] != null)
+{
+    <h2 style="color:red"> @TempData["basarili"]</h2>
+}
+
+<div class="container">
+    <div class="row pt-3 pb-4">
+        <div>
+            <h1>Kitaplar</h1>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+
+                <th>
+                    
+                </th>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Kitap
+                </th>
+                <th>
+                    Tanım
+                </th>
+                <th>
+                    Yazar
+                </th>
+                <th>
+                    Fiyat
+                </th>
+                <th>
+                    Kitap Türü
+                </th>
+                @if (User.IsInRole(UserRole.Role_Ertu))
+                {
+
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
+                }
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var Book in Model)
+            {
+                <tr>
+                    <td align="center" valign="middle">
+                        <img src="@Book.PictureUrl" style="border-radius:7px; border:1px; max-width: 145px; max-height: 275px;"/>
+                    </td>
+                    <td align="center" valign="middle">@Book.Id</td>
+                    <td align="center" valign="middle">@Book.BookName</td>
+                    <td align="center" valign="middle">@Book.Description</td>
+                    <td align="center" valign="middle">@Book.Author</td>
+                    <td align="center" valign="middle">@Book.price</td>
+                    <td align="center" valign="middle">@Book.bookType.Name</td>
+
+                    @if (User.IsInRole(UserRole.Role_Ertu))
+                    {
+                        <td align="center" valign="middle">
+                            <a asp-controller="Book" asp-action="AddUpdate" asp-route-id="@Book.Id" type="button" class="btn btn-warning" style="width:250px">Güncelle</a>
+                        </td>
+                        <td align="center" valign="middle">
+                            <a asp-controller="Book" asp-action="Delete" asp-route-id="@Book.Id" type="button" class="btn btn-danger" style="width:250px">Sil</a>
+                        </td>
+                    }
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (User.IsInRole(UserRole.Role_Ertu))
+    {
+        <div class="row pt-3 pb-2">
+
+            <div>
+                <a asp-controller="Book" asp-action="AddUpdate" class="btn btn-lg btn-primary" type="button">
+                    Yeni Kitap Oluştur
+                </a>
+            </div>
+
+        </div>
+    }
+
+</div>
