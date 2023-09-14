@@ -1,0 +1,32 @@
+﻿@model BookType
+
+<form asp-controller="BookType" asp-action="AddOrUpdate" method="post">
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary"> @(Model != null && Model.Id != 0 ? "Kitap Türü Güncelle" : "Kitap Türü Ekle")</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <input type="hidden" asp-for="Id" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-lg btn-primary" style="width:250px">
+                Kitap Türü @(Model != null && Model.Id != 0 ? "Güncelle" : "Ekle")
+            </button>
+        </div>
+
+        <div class="mb-3">
+            <a asp-controller="BookType" asp-action="Index" class="btn btn-lg btn-primary" style="width:250px">
+                Kitap Türlerine Geri Dön
+            </a>
+        </div>
+    </div>
+</form>

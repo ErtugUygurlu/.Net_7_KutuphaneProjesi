@@ -20,3 +20,30 @@ html {
 body {
   margin-bottom: 60px;
 }
+/* Button */
+.table tr .btn-warning {
+    width: 162px !important;
+}
+
+/* Button */
+.table tr .btn-danger {
+    width: 144px !important;
+}
+
+/* Th */
+.table tr th {
+    padding-right: 0px;
+    margin-left: 0px;
+}
+
+/* Th */
+.container .table thead tr th {
+    width: 757px !important;
+}
+
+/* Table */
+.container .table {
+    transform: translatex(0px) translatey(0px);
+    padding-right: 119px;
+}
+

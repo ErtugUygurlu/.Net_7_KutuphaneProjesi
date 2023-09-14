@@ -21,26 +21,18 @@
                 <th>
                     Kitap Türü
                 </th>
-                <th>
-                   
-                </th>
-                <th>
-                    
-                </th>
+                
             </tr>
         </thead>
 
         <tbody>
-            @foreach (var BookType in Model)
+            @foreach (var item in Model)
             {
                 <tr>
-                    <td>@BookType.Id</td>
-                    <td>@BookType.Name</td>
+                    <td>@item.Name</td>
                     <td>
-                        <a asp-controller="BookType" asp-action="Update" asp-route-id="@BookType.Id" type="button" class="btn btn-warning" style="width:250px">Güncelle</a>
-                    </td>
-                    <td>
-                        <a asp-controller="BookType" asp-action="Delete" asp-route-id="@BookType.Id" type="button" class="btn btn-danger" style="width:250px">Sil</a>
+                        <a asp-controller="BookType" asp-action="AddOrUpdate" asp-route-id="@item.Id" type="button" class="btn btn-warning" style="width:250px">Düzenle</a> |
+                        <a asp-controller="BookType" asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-danger" style="width:250px">Sil</a>
                     </td>
                 </tr>
             }
@@ -50,7 +42,7 @@
     <div class="row pt-3 pb-2">
 
         <div>
-            <a asp-controller="BookType" asp-action="Add" class="btn btn-lg btn-primary" type="button">
+            <a asp-controller="BookType" asp-action="AddOrUpdate" class="btn btn-lg btn-primary" type="button">
                 Yeni Kitap Türü Oluştur
             </a>
         </div>
